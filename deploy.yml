@@ -1,0 +1,74 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Create PWA assets (generate placeholder icons)
+      run: |
+        mkdir -p assets
+        # Create a simple placeholder icon using ImageMagick
+        if command -v convert &> /dev/null; then
+          convert -size 512x512 xc:#2563eb -fill white -pointsize 100 \
+            -draw "text 150,300 '📐'" assets/icon-512x512.png
+          convert assets/icon-512x512.png -resize 192x192 assets/icon-192x192.png
+          convert assets/icon-512x512.png -resize 144x144 assets/icon-144x144.png
+          convert assets/icon-512x512.png -resize 96x96 assets/icon-96x96.png
+          convert assets/icon-512x512.png -resize 72x72 assets/icon-72x72.png
+          convert assets/icon-512x512.png -resize 128x128 assets/icon-128x128.png
+          convert assets/icon-512x512.png -resize 152x152 assets/icon-152x152.png
+          convert assets/icon-512x512.png -resize 384x384 assets/icon-384x384.png
+        else
+          echo "ImageMagick not available, creating empty icon files"
+          touch assets/icon-512x512.png
+          touch assets/icon-192x192.png
+          touch assets/icon-144x144.png
+          touch assets/icon-96x96.png
+          touch assets/icon-72x72.png
+          touch assets/icon-128x128.png
+          touch assets/icon-152x152.png
+          touch assets/icon-384x384.png
+        fi
+        
+    - name: Create version.json
+      run: |
+        echo '{
+          "version": "1.2.0",
+          "build_date": "'$(date -I)'",
+          "changelog": "PWA deployment build"
+        }' > version.json
+        
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: .
+        branch: gh-pages
+        clean: true
+        clean-exclude: |
+          .git
+          .github
+          
+    - name: Success Notification
+      run: |
+        echo "Deployment successful! Your PWA is now available at:"
+        echo "https://[your-username].github.io/[repository-name]/"

@@ -1,0 +1,5 @@
+{
+  "version": "1.2.0",
+  "build_date": "2024-02-11",
+  "changelog": "Added PWA support and offline functionality"
+}
