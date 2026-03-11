@@ -1,79 +1,87 @@
 {
   "name": "Site Engineering Assistant",
-  "short_name": "Site Engineer",
-  "description": "Comprehensive field assistant for civil engineers and surveyors",
+  "short_name": "Site Assist",
+  "description": "Comprehensive field reference for civil engineers – TS16, GPS, DXF, tunnels, highways, RC frames, railways, calculators.",
   "start_url": "/",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#0f172a",
+  "background_color": "#f8fafc",
   "theme_color": "#2563eb",
+  "orientation": "portrait",
   "icons": [
     {
-      "src": "assets/icon-72x72.png",
+      "src": "/icons/icon-72.png",
       "sizes": "72x72",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "assets/icon-96x96.png",
+      "src": "/icons/icon-96.png",
       "sizes": "96x96",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "assets/icon-128x128.png",
+      "src": "/icons/icon-128.png",
       "sizes": "128x128",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "assets/icon-144x144.png",
+      "src": "/icons/icon-144.png",
       "sizes": "144x144",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "assets/icon-152x152.png",
+      "src": "/icons/icon-152.png",
       "sizes": "152x152",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "assets/icon-192x192.png",
+      "src": "/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "assets/icon-384x384.png",
+      "src": "/icons/icon-384.png",
       "sizes": "384x384",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "assets/icon-512x512.png",
+      "src": "/icons/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
-  "categories": ["productivity", "education", "business"],
-  "shortcuts": [
-    {
-      "name": "TS16 Guide",
-      "short_name": "TS16",
-      "description": "Total Station field guide",
-      "url": "/?module=ts16",
-      "icons": [{ "src": "assets/icon-96x96.png", "sizes": "96x96" }]
-    },
-    {
-      "name": "Calculators",
-      "short_name": "Calc",
-      "description": "Engineering calculators",
-      "url": "/?module=calculators",
-      "icons": [{ "src": "assets/icon-96x96.png", "sizes": "96x96" }]
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "screenshots": [
     {
-      "src": "assets/screenshot1.png",
+      "src": "/screenshots/home.png",
       "sizes": "1080x1920",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Main interface"
+      "label": "Home screen"
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "TS16 Guide",
+      "short_name": "TS16",
+      "description": "Total Station field procedures",
+      "url": "/?module=ts16",
+      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Calculators",
+      "short_name": "Calc",
+      "description": "Field calculators",
+      "url": "/?open=calculators",
+      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
     }
   ]
 }
